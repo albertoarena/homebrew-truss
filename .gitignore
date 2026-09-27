@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# IDE files
+/.idea/
+/.vscode/
+/.fleet/
+/.zed/
+*.iml
+*.sublime-project
+*.sublime-workspace
+*.swp
+*~
+
+# Local Claude files
+CLAUDE.local.md
+CLAUDE.*.local.md
