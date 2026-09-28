@@ -1,7 +1,8 @@
 # Homebrew tap for Truss
 
-The Homebrew tap for [Truss](https://trussphp.com), a live database structure
-viewer and schema doctor. Structure only, never data.
+The Homebrew tap for [Truss](https://trussphp.com): a live database structure
+viewer that renders your schema as an ER diagram, and a schema doctor.
+Structure only, never data.
 
 ## Not ready yet
 
