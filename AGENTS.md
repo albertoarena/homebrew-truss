@@ -111,15 +111,30 @@ brew test albertoarena/truss/truss
 brew uninstall truss && brew untap albertoarena/truss
 ```
 
-**The formula installs no PHP.** It installs the PHAR as the binary and relies
-on its `#!/usr/bin/env php` shebang to find the interpreter the user already
-has, so there is no `depends_on "php"` runtime line and no wrapper script to
-get wrong. PHP is declared as a test-time dependency only.
+**The formula installs no PHP.** PHP is declared as a test-time dependency
+only, and the binary runs on the interpreter the user already has rather than
+one Homebrew puts there.
 
-The consequence for checking a change: `brew install` succeeds on a machine
-with no PHP, and the binary reports that itself on first run. **Test on a
-machine whose PHP is not Homebrew's**, since that is the common case rather
-than the edge one.
+**A machine with no PHP at all is the case to get right, and it is not the
+obvious one.** The interpreter is resolved at exec time, so a missing PHP fails
+at the shebang with `env: php: No such file or directory` and exit 127,
+**before any of the PHAR runs**. A version guard inside the PHAR cannot help
+here: it only fires when PHP exists and is too old. Two different failures that
+are easy to treat as one:
+
+| State | What happens | Who reports it |
+| --- | --- | --- |
+| No PHP | exec fails at the shebang, exit 127 | `env`, not Truss |
+| PHP below the floor | the guard fires with a useful message | the PHAR |
+
+macOS has shipped no system PHP since Monterey, so the first row is the default
+state of a clean Mac rather than an edge case, and it leaves `brew install`
+reporting success while `truss` fails with a message naming a program the user
+never typed. **How the formula answers this is an open decision belonging to
+the release that writes it**, so do not assume the shape from this file.
+
+**Test on a machine whose PHP is not Homebrew's**, since that is the common
+case rather than the edge one, and test on one with no PHP at all.
 
 ## Writing style
 
