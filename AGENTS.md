@@ -1,6 +1,8 @@
-# AGENTS.md
+# Agent instructions
 
-Instructions for any agent or contributor working in this repository.
+For any agent or contributor working in this repository. Reachable as either
+`AGENTS.md` or `CLAUDE.md`, which is a symlink to it, so there is one file and
+it cannot drift.
 
 ## What this repository is
 
