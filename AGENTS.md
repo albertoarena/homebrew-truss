@@ -111,9 +111,15 @@ brew test albertoarena/truss/truss
 brew uninstall truss && brew untap albertoarena/truss
 ```
 
-Note that the versioned `php@8.x` formulae are keg-only, so they are not
-symlinked into the PATH. Any wrapper script the formula writes must reference
-the interpreter through its `opt_bin` path rather than assuming `php` resolves.
+**The formula installs no PHP.** It installs the PHAR as the binary and relies
+on its `#!/usr/bin/env php` shebang to find the interpreter the user already
+has, so there is no `depends_on "php"` runtime line and no wrapper script to
+get wrong. PHP is declared as a test-time dependency only.
+
+The consequence for checking a change: `brew install` succeeds on a machine
+with no PHP, and the binary reports that itself on first run. **Test on a
+machine whose PHP is not Homebrew's**, since that is the common case rather
+than the edge one.
 
 ## Writing style
 
