@@ -12,12 +12,29 @@ command-line binary, which has not been released. `brew tap` will succeed and
 When the binary ships, installing it will be:
 
 ```sh
+brew tap albertoarena/truss
 brew install albertoarena/truss/truss
 ```
 
-That command is fully qualified on purpose. Tapping a repository does not grant
-whole-tap trust in Homebrew, so the qualified form works as written with no
-extra step.
+**Two commands, because Homebrew does not tap a repository for you.** Asked to
+install from a tap it has not been given, it stops and tells you to tap it
+explicitly first.
+
+**The install name is fully qualified on purpose**, and tapping alone is not
+enough to shorten it: tapping a repository does not grant whole-tap trust, so
+the bare name is recognised and then refused. If you would rather type the
+short form, trust the tap once:
+
+```sh
+brew trust albertoarena/truss
+brew install truss
+```
+
+**`brew install albertoarena/truss` is not a shorter spelling of any of this,
+and it is worth knowing why.** A name with one slash is not read as a tap.
+Homebrew discards the owner and looks in its own core repository for a formula
+called `truss`, which is not this one. The name belongs to whoever packages the
+FreeBSD and Solaris syscall tracer of the same name, should anybody ever do so.
 
 ## Truss today
 
