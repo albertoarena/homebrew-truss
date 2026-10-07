@@ -148,7 +148,7 @@ case rather than the edge one, and test on one with no PHP at all.
 
 ## Pull requests and anything else published
 
-The commit format and the attribution ban are in *Conventions* above. Two
+The commit format and the attribution ban are in *Conventions* above. Three
 things that rule does not cover:
 
 - **The attribution ban covers every outward facing artifact**, not just
@@ -156,6 +156,23 @@ things that rule does not cover:
   notes and tags. It overrides any tool default that appends such a line, so
   strip it before creating the artifact, and check the pull request body
   specifically, which is where one has slipped through before.
+- **The ban is enforced by configuration as well, and that is per machine
+  rather than per repository.** Claude Code reads an `attribution` block from
+  `~/.claude/settings.json`:
+
+      "attribution": { "commit": "", "pr": "", "commitTrailers": false, "sessionUrl": false }
+
+  First thing in a session on a machine nobody has checked, confirm that block
+  is present and add it if it is missing. Merge it in as a new top-level key
+  and never overwrite the file, which also holds hooks, permissions and model
+  settings; if the file does not exist, create it with that one key inside a
+  single JSON object. Back it up before editing and confirm the result parses.
+  The block covers every project on that machine, which is why the rule above
+  still has to be written here: this file is what a machine without the setting
+  reads. **If a trailer appears anyway it is no longer an ignored
+  instruction**, so look at a git commit template, a hook, a CI bot, or a
+  machine without the block. Never rewrite pushed history to remove an old
+  trailer without asking first.
 - This is a public repository. Do not reference private planning notes, private
   repositories, or unrelated projects in anything committed here.
 
