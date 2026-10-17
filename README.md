@@ -1,16 +1,10 @@
 # Homebrew tap for Truss
 
 The Homebrew tap for [Truss](https://trussphp.com): a live database structure
-viewer that renders your schema as an ER diagram, and a schema doctor.
+viewer that renders your schema as an ER diagram (ERD), and a schema doctor.
 Structure only, never data.
 
-## Not ready yet
-
-**There is no formula here yet.** This repository is reserved for the `truss`
-command-line binary, which has not been released. `brew tap` will succeed and
-`brew install` will not find anything, so there is nothing to try today.
-
-When the binary ships, installing it will be:
+## Install
 
 ```sh
 brew tap albertoarena/truss
@@ -37,9 +31,23 @@ Homebrew discards the owner and looks in its own core repository for a formula
 called `truss`, which is not this one. The name belongs to whoever packages the
 FreeBSD and Solaris syscall tracer of the same name, should anybody ever do so.
 
-## Truss today
+## PHP
 
-Truss is currently a Laravel package, installed with Composer:
+**Truss needs PHP 8.2 or newer, and this formula does not install it.** The
+`truss` binary runs on the PHP you already have, whether that comes from
+Homebrew, Herd or anywhere else on your PATH. macOS ships no PHP, so on a clean
+Mac `truss` stops with:
+
+```
+Truss needs PHP. Run: brew install php
+```
+
+and exits 2. If the PHP it finds is older than 8.2, Truss says which version it
+found and which one it needs.
+
+## Truss as a Laravel package
+
+Truss is also a Laravel package, installed with Composer:
 
 ```sh
 composer require --dev albertoarena/laravel-truss
@@ -71,7 +79,7 @@ version that will not upgrade, or a checksum that does not match.
 
 Conventions for this repository, including how the formula is kept current and
 what may be changed by hand, are in [AGENTS.md](AGENTS.md). A fuller
-contributing guide follows once there is a formula to contribute to.
+contributing guide will follow.
 
 ## Licence
 
