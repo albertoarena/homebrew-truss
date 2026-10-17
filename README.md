@@ -7,20 +7,20 @@ Structure only, never data.
 ## Install
 
 ```sh
-brew tap albertoarena/truss
 brew install albertoarena/truss/truss
 ```
 
-**Two commands, because Homebrew does not tap a repository for you.** Asked to
-install from a tap it has not been given, it stops and tells you to tap it
-explicitly first.
+**One command is enough.** Given the fully qualified name, Homebrew taps this
+repository itself the first time and installs the formula, so there is no
+separate `brew tap` step.
 
 **The install name is fully qualified on purpose**, and tapping alone is not
 enough to shorten it: tapping a repository does not grant whole-tap trust, so
 the bare name is recognised and then refused. If you would rather type the
-short form, trust the tap once:
+short form, tap and trust it once:
 
 ```sh
+brew tap albertoarena/truss
 brew trust albertoarena/truss
 brew install truss
 ```
