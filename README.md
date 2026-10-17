@@ -77,9 +77,9 @@ version that will not upgrade, or a checksum that does not match.
 
 ## Contributing
 
-Conventions for this repository, including how the formula is kept current and
-what may be changed by hand, are in [AGENTS.md](AGENTS.md). A fuller
-contributing guide will follow.
+See [CONTRIBUTING.md](CONTRIBUTING.md). The full conventions for this
+repository, including how the formula is kept current and what may be changed
+by hand, are in [AGENTS.md](AGENTS.md).
 
 ## Licence
 
