@@ -1,5 +1,5 @@
 class Truss < Formula
-  desc "Database structure viewer with ER diagrams and a schema doctor, never row data"
+  desc "Structure only: ER diagram (ERD) viewer and schema doctor for live databases"
   homepage "https://trussphp.com"
   url "https://github.com/albertoarena/laravel-truss/releases/download/v1.15.0/truss.phar"
   sha256 "5dfbfd8d53690eb462dac8521e4fae9ddc43a30cbb7073a95405d02390f34fec"
