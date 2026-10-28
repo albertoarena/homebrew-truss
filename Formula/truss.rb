@@ -1,8 +1,8 @@
 class Truss < Formula
   desc "Structure only: ER diagram (ERD) viewer and schema doctor for live databases"
   homepage "https://trussphp.com"
-  url "https://github.com/albertoarena/laravel-truss/releases/download/v1.15.2/truss.phar"
-  sha256 "1a4fa4faeea32a722cb95ccb8923b25b0f44904ce1da8ff12c9cfe87d48ea33a"
+  url "https://github.com/albertoarena/laravel-truss/releases/download/v1.15.3/truss.phar"
+  sha256 "6ea2829b265534a4c791be99506367d6cceec7539e9e541ae39cee75fcc033b8"
   license "MIT"
 
   # PHP is a test dependency only, so installing Truss installs no
